@@ -5,18 +5,16 @@ Created on Tue Dec  9 23:37:10 2014
 @author: meinazhou
 """
 import sys
+from validationFunctions import *
 def main():
-    while True:
-        try:
-            
-            age =raw_input('Please enter your age.')
-            education =raw_input('Please enter your education.')
-            martial_status =raw_input('Please enter your martial status.')
-            ocupation =raw_input('Please enter your ocupation.')
-            capital_gain =raw_input('Please enter your capital gain.')
-            hours_per_week =raw_input('Please enter your working hours per week.') 
-        except (KeyboardInterrupt, EOFError):
-            sys.exit()
+
+    age =secure_input(age_validtion(),'Please enter your age.', parse_func) # parse func need to revised after finishing parse functions
+    education =secure_input(education_validation(),'Please enter your education.',parse_func)
+    martial_status =secure_input(martial_validation(),'Please enter your martial status.', parse_func)
+    ocupation =secure_input(ocupation_validation(),'Please enter your ocupation.',parse_func)
+    capital_gain =secure_input(capital_gain_validation(),'Please enter your capital gain.', parse_func)
+    hours_per_week secure_input(hours_per_week_validation(),'Please enter your working hours per week.',parse_func) 
+    
             
             
 def secure_input(validation_func, input_request,parse_func):
@@ -33,7 +31,16 @@ def secure_input(validation_func, input_request,parse_func):
         if validation_func(string): #if the validation function returns true
             parsed_input = parse_func(string)
         else:
-            #raise exception for invalid input 
+            # ask the user to confirm whether treat the specific feature as unknown or not
+
+            reenter_reply =raw_input('Your input is not valid. Do you want to re-enter it? Type Y if yes. N if not and we will treat this variable as unknown.')
+            reenter_reply = ''.join(reenter_reply.split())
+            if reenter_reply =='Y':
+                continue 
+            else:
+                parsed_input = 'unknown'
+                
+        
     return parsed_input 
             
             
