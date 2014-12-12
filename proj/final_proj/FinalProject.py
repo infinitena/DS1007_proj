@@ -11,12 +11,12 @@ from user_exceptions import *
 
 def main():
 
-    age =secure_input(age_validation(),'Please enter your age.', parse_func.parse_age) # parse func need to revised after finishing parse functions
-    education =secure_input(education_validation(),'Please enter your education.',parse_func)
-    marital_status =secure_input(marital_validation(),'Please enter your marital status.', parse_func)
-    ocupation =secure_input(ocupation_validation(),'Please enter your ocupation.',parse_func)
-    capital_gain =secure_input(capital_gain_validation(),'Please enter your capital gain.', parse_func)
-    hours_per_week = secure_input(hours_per_week_validation(),'Please enter your working hours per week.',parse_func) 
+    age =secure_input(age_validation,'Please enter your age.', parse_func.parse_age) # parse func need to revised after finishing parse functions
+    education =secure_input(education_validation,'Please enter your education.',parse_func.parse_education)
+    marital_status =secure_input(marital_validation,'Please enter your marital status.', parse_func.parse_marital_status)
+    ocupation =secure_input(ocupation_validation,'Please enter your ocupation.',parse_func.parse_ocupation)
+    capital_gain =secure_input(capital_gain_validation,'Please enter your capital gain.', parse_func.parse_capital_gain)
+    hours_per_week = secure_input(hours_per_week_validation,'Please enter your working hours per week.',parse_func.parse_hours_per_week) 
                
             
 def secure_input(validation_func, input_request,parse_function):
